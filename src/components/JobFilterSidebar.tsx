@@ -2,6 +2,7 @@ import { placeholderJobs } from "@/lib/PlaceholderJobs";
 import Select from "./Select";
 import { jobFilterSchema, type JobFilterValues } from "@/lib/validation";
 import { redirect } from "next/navigation";
+import { FormSubmitButton } from "./FormSubmitButton";
 
 type JobFilterSidebarProps = {
   defaultValues: JobFilterValues;
@@ -37,7 +38,7 @@ export async function JobFilterSidebar({
 
   return (
     <aside className="sticky top-0 h-fit rounded-lg border bg-background p-4 md:w-[260px]">
-      <form action={filterJobs}>
+      <form action={filterJobs} key={JSON.stringify(defaultValues)}>
         <div className="space-y-4">
           <div className="flex flex-col gap-2">
             <label htmlFor="q">Search</label>
@@ -90,12 +91,7 @@ export async function JobFilterSidebar({
             />
             <label htmlFor="remote">Remote Jobs</label>
           </div>
-          <button
-            type="submit"
-            className="w-full rounded-lg border bg-[#0F172A] p-2 text-white"
-          >
-            Filter Jobs
-          </button>
+          <FormSubmitButton>Filter Jobs</FormSubmitButton>
         </div>
       </form>
     </aside>

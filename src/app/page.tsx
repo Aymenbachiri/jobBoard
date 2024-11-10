@@ -9,6 +9,33 @@ type SearchParams = Promise<{
   remote?: string;
 }>;
 
+function getTitle({ q, type, location, remote }: JobFilterValues) {
+  const titlePrefix = q
+    ? `${q} jobs`
+    : type
+      ? `${type} developer jobs`
+      : remote
+        ? "Remote developer jobs"
+        : "All developer jobs";
+
+  const titleSuffix = location ? ` in ${location}` : "";
+
+  return `${titlePrefix}${titleSuffix}`;
+}
+
+export async function generateMetadata(props: { searchParams: SearchParams }) {
+  const searchParams = await props.searchParams;
+  const { q, type, location, remote } = searchParams;
+  return {
+    title: `${getTitle({
+      q,
+      type,
+      location,
+      remote: remote === "true",
+    })} | Job Board`,
+  };
+}
+
 export default async function Home(props: { searchParams: SearchParams }) {
   const searchParams = await props.searchParams;
   const q = searchParams.q;
@@ -27,7 +54,7 @@ export default async function Home(props: { searchParams: SearchParams }) {
     <main className="m-auto my-10 max-w-5xl space-y-10 px-3">
       <div className="space-y-5 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-          Developer Jobs
+          {getTitle(filterValues)}
         </h1>
         <p className="text-muted-foreground">Find your dream job.</p>
       </div>

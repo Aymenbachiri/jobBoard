@@ -10,7 +10,7 @@ export function BanknoteIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="size-16 shrink-0"
+      className="size-4 shrink-0"
     >
       <rect width="20" height="12" x="2" y="6" rx="2"></rect>
       <circle cx="12" cy="12" r="2"></circle>

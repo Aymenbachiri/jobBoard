@@ -10,7 +10,7 @@ export function GlobeIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="size-16 shrink-0"
+      className="size-4 shrink-0"
     >
       <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"></path>
       <path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.17"></path>
