@@ -1,7 +1,11 @@
 import { placeholderJobs } from "@/lib/PlaceholderJobs";
 import Select from "./Select";
-import { jobFilterSchema } from "@/lib/validation";
+import { jobFilterSchema, type JobFilterValues } from "@/lib/validation";
 import { redirect } from "next/navigation";
+
+type JobFilterSidebarProps = {
+  defaultValues: JobFilterValues;
+};
 
 async function filterJobs(formData: FormData) {
   "use server";
@@ -22,7 +26,9 @@ async function filterJobs(formData: FormData) {
   redirect(`/?${searchParams.toString()}`);
 }
 
-export async function JobFilterSidebar() {
+export async function JobFilterSidebar({
+  defaultValues,
+}: JobFilterSidebarProps) {
   // Use Set to get distinct locations
   const distinctLocations = Array.from(
     new Set(placeholderJobs.map((job) => job.location)),
@@ -40,12 +46,17 @@ export async function JobFilterSidebar() {
               id="q"
               name="q"
               placeholder="Title, company, etc."
+              defaultValue={defaultValues.q}
               className="border-input w-full rounded-lg border p-2"
             />
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="type">Type</label>
-            <Select id="type" name="type">
+            <Select
+              id="type"
+              name="type"
+              defaultValue={defaultValues.type || ""}
+            >
               <option value="">All types</option>
               {jobTypes.map((type) => (
                 <option key={type} value={type}>
@@ -56,7 +67,11 @@ export async function JobFilterSidebar() {
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="location">Location</label>
-            <Select id="location" name="location">
+            <Select
+              id="location"
+              name="location"
+              defaultValue={defaultValues.location || ""}
+            >
               <option value="">All locations</option>
               {distinctLocations.map((location) => (
                 <option key={location} value={location}>
@@ -70,6 +85,7 @@ export async function JobFilterSidebar() {
               type="checkbox"
               id="remote"
               name="remote"
+              defaultChecked={defaultValues.remote}
               className="scale-125 accent-black"
             />
             <label htmlFor="remote">Remote Jobs</label>

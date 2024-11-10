@@ -1,6 +1,6 @@
 import { type JobFilterValues } from "@/lib/validation";
-import { JobFilterSidebar } from "./components/JobFilterSidebar";
-import { JobResults } from "./components/JobResults";
+import { JobFilterSidebar } from "@/components/JobFilterSidebar";
+import { JobResults } from "@/components/JobResults";
 
 type SearchParams = Promise<{
   q?: string;
@@ -32,7 +32,7 @@ export default async function Home(props: { searchParams: SearchParams }) {
         <p className="text-muted-foreground">Find your dream job.</p>
       </div>
       <section className="flex flex-col gap-4 md:flex-row">
-        <JobFilterSidebar />
+        <JobFilterSidebar defaultValues={filterValues} />
         <JobResults filterValues={filterValues} />
       </section>
     </main>

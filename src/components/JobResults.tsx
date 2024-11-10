@@ -47,7 +47,9 @@ export function JobResults({
         <JobListItem job={job} key={job.id} />
       ))}
       {filteredJobs.length === 0 && (
-        <div className="text-muted-foreground text-center">No jobs found.</div>
+        <div className="text-muted-foreground text-center">
+          No jobs found. try adjusting your search filters.
+        </div>
       )}
     </div>
   );
