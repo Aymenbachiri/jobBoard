@@ -49,7 +49,7 @@ export default forwardRef<HTMLInputElement, LocationInputProps>(
             {cities.map((city) => (
               <button
                 key={city}
-                className="block w-full p-2 text-start"
+                className="block w-full p-2 text-start hover:bg-gray-200"
                 onMouseDown={(e) => {
                   e.preventDefault();
                   onLocationSelected(city);
