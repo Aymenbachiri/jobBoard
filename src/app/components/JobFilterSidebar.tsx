@@ -38,6 +38,7 @@ export async function JobFilterSidebar() {
             <input
               type="text"
               id="q"
+              name="q"
               placeholder="Title, company, etc."
               className="border-input w-full rounded-lg border p-2"
             />

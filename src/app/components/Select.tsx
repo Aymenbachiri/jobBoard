@@ -16,7 +16,7 @@ export default forwardRef<
         ref={ref}
         {...props}
       />
-      <ChevronDownIcon />
+      <ChevronDownIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2" />
     </div>
   );
 });

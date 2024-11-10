@@ -1,4 +1,4 @@
-export function ChevronDownIcon() {
+export function ChevronDownIcon({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +10,7 @@ export function ChevronDownIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="absolute right-3 top-3 h-4 w-4 opacity-50"
+      className={className}
     >
       <path d="m6 9 6 6 6-6"></path>
     </svg>
