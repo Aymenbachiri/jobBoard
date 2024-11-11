@@ -1,7 +1,7 @@
 import { User } from "@clerk/nextjs/server";
 import { UserResource } from "@clerk/types";
-import { clsx, type ClassValue } from "clsx";
 import { formatDistanceToNowStrict } from "date-fns";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {

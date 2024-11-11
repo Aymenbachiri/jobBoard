@@ -4,14 +4,33 @@ import { jobTypes, locationTypes } from "@/lib/types";
 import LocationInput from "./LocationInput";
 import { NewJobSumbitFormButton } from "./NewJobSumbitFormButton";
 import { useState } from "react";
+import { type CreateJobValues } from "@/lib/validation";
+import { createJobPosting } from "../_lib/actions";
 
 export function NewJobForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const onLocationSelected = (location: string) => {
     console.log(location);
   };
+
+  async function onSubmit(values: CreateJobValues) {
+    const formData = new FormData();
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) {
+        formData.append(key, value);
+      }
+    });
+
+    try {
+      await createJobPosting(formData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
-    <form className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-4">
       <section className="flex flex-col gap-2">
         <label
           htmlFor="title"

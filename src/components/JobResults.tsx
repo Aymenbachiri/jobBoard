@@ -1,6 +1,7 @@
 import { placeholderJobs } from "@/lib/PlaceholderJobs";
 import { JobListItem } from "./JobListItem";
 import { type JobFilterValues } from "@/lib/validation";
+import { MyLink } from "./common/MyLink";
 
 type JobResultsProps = {
   filterValues: JobFilterValues;
@@ -44,7 +45,9 @@ export function JobResults({
   return (
     <div className="grow space-y-4">
       {filteredJobs.map((job) => (
-        <JobListItem job={job} key={job.id} />
+        <MyLink href={`/jobs/${job.slug}`} key={job.id} className="block">
+          <JobListItem job={job} />
+        </MyLink>
       ))}
       {filteredJobs.length === 0 && (
         <div className="text-muted-foreground text-center">
