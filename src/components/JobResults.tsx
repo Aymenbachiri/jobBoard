@@ -61,13 +61,13 @@ export function JobResults({ filterValues, page = 1 }: JobResultsProps) {
           No jobs found. try adjusting your search filters.
         </div>
       )}
-      {jobs.length > 0 && (
+      {/* {jobs.length > 0 && (
         <Pagination
           currentPage={page}
           totalPages={Math.ceil(totalResults / jobsPerPage)}
           filterValues={filterValues}
         />
-      )}
+      )} */}
     </div>
   );
 }
