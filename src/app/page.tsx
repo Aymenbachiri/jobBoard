@@ -7,6 +7,7 @@ type SearchParams = Promise<{
   type?: string;
   location?: string;
   remote?: string;
+  page?: string;
 }>;
 
 function getTitle({ q, type, location, remote }: JobFilterValues) {
@@ -42,6 +43,7 @@ export default async function Home(props: { searchParams: SearchParams }) {
   const type = searchParams.type;
   const location = searchParams.location;
   const remote = searchParams.remote;
+  const page = searchParams.page;
 
   const filterValues: JobFilterValues = {
     q,
@@ -60,7 +62,10 @@ export default async function Home(props: { searchParams: SearchParams }) {
       </div>
       <section className="flex flex-col gap-4 md:flex-row">
         <JobFilterSidebar defaultValues={filterValues} />
-        <JobResults filterValues={filterValues} />
+        <JobResults
+          filterValues={filterValues}
+          page={page ? parseInt(page) : undefined}
+        />
       </section>
     </main>
   );
